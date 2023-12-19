@@ -13,85 +13,16 @@
     "milkdown plugin"
   ],
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "import": "./src/index.ts"
-    },
-    "./image-block": {
-      "import": "./src/image-block/index.ts"
-    },
-    "./code-block": {
-      "import": "./src/code-block/index.ts"
-    },
-    "./list-item-block": {
-      "import": "./src/list-item-block/index.ts"
-    },
-    "./link-tooltip": {
-      "import": "./src/link-tooltip/index.ts"
-    },
-    "./inline-image": {
-      "import": "./src/inline-image/index.ts"
-    }
-  },
-  "main": "./src/index.ts",
-  "publishConfig": {
-    "main": "./lib/index.es.js",
-    "types": "./lib/index.d.ts",
-    "exports": {
-      ".": {
-        "types": "./lib/index.d.ts",
-        "import": "./lib/index.es.js"
-      },
-      "./image-block": {
-        "types": "./lib/image-block/index.d.ts",
-        "import": "./lib/image-block/index.es.js"
-      },
-      "./code-block": {
-        "types": "./lib/code-block/index.d.ts",
-        "import": "./lib/code-block/index.es.js"
-      },
-      "./list-item-block": {
-        "types": "./lib/list-item-block/index.d.ts",
-        "import": "./lib/list-item-block/index.es.js"
-      },
-      "./link-tooltip": {
-        "types": "./lib/link-tooltip/index.d.ts",
-        "import": "./lib/link-tooltip/index.es.js"
-      },
-      "./inline-image": {
-        "types": "./lib/inline-image/index.d.ts",
-        "import": "./lib/inline-image/index.es.js"
-      }
-    },
-    "typesVersions": {
-      "*": {
-        "image-block": [
-          "./lib/image-block/index.d.ts"
-        ],
-        "code-block": [
-          "./lib/code-block/index.d.ts"
-        ],
-        "list-item-block": [
-          "./lib/list-item-block/index.d.ts"
-        ],
-        "link-tooltip": [
-          "./lib/link-tooltip/index.d.ts"
-        ],
-        "inline-image": [
-          "./lib/inline-image/index.d.ts"
-        ]
-      }
-    }
-  },
   "files": [
     "lib",
     "src"
   ],
   "scripts": {
-    "start": "rollup -c -w",
+    "start": "library \"src/**/*\" --watch",
     "test": "vitest",
     "tsc": "tsc --noEmit && echo",
-    "build": "rollup -c && echo"
+    "build": "library \"src/**/*\"",
+    "exports": "exports \"types/**/*\" \"lib/**/*\""
   },
   "peerDependencies": {
     "@codemirror/language": "^6",
@@ -117,6 +48,8 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@atomico/exports": "^1.13.0",
+    "@atomico/vite": "^2.16.0",
     "@codemirror/language": "^6.9.0",
     "@codemirror/state": "^6.2.1",
     "@codemirror/view": "^6.16.0",

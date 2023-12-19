@@ -1,4 +1,6 @@
 /* Copyright 2021, Milkdown by Mirone. */
-import { pluginViteConfig } from '../../vite.config.mjs'
+import atomico from "@atomico/vite";
 
-export default pluginViteConfig(import.meta.url)
+export default {
+  plugins: atomico(),
+};
